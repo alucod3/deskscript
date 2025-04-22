@@ -370,24 +370,22 @@ EOL
             log_info "Instalando alacritty..."
             sudo pacman -S --noconfirm alacritty
             
-            # Configuração básica do alacritty
+            # Configuração básica do alacritty em TOML (novo formato)
             mkdir -p ~/.config/alacritty
-            if [ ! -f ~/.config/alacritty/alacritty.yml ]; then
-                cat > ~/.config/alacritty/alacritty.yml << 'EOL'
+            if [ ! -f ~/.config/alacritty/alacritty.toml ]; then
+                cat > ~/.config/alacritty/alacritty.toml << 'EOL'
 # Alacritty Terminal Configuration
-font:
-  normal:
-    family: JetBrainsMono Nerd Font
-  size: 12.0
 
-window:
-  padding:
-    x: 4
-    y: 4
-  opacity: 0.95
+[font]
+normal = { family = "JetBrainsMono Nerd Font" }
+size = 12.0
 
-bell:
-  duration: 0
+[window]
+padding = { x = 4, y = 4 }
+opacity = 0.95
+
+[bell]
+duration = 0
 EOL
                 log_success "Configuração básica do alacritty criada"
             fi
